@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  db-movie-app:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: movieapp
+      POSTGRES_PASSWORD: movieapp
+    volumes:
+      - type: volume
+        source: movie-data
+        target: "/data/db"
+        read_only: false
+
+
+volumes:
+  movie-data:
+    name: movie-data

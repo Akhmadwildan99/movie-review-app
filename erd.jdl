@@ -1,0 +1,33 @@
+entity User {
+  id Long
+  username String
+  password TextBlob
+  isAdmin Boolean
+  isActive Boolean
+  createdAt Instant
+  updatedAt Instant
+}
+
+entity Movie {
+  id Long
+  title String
+  description TextBlob
+  releaseDate Instant
+  isActive Boolean
+  createdAt Instant
+  updatedAt Instant
+}
+
+entity MovieReview {
+  id Long
+  content TextBlob
+  rating Integer
+  createdAt Instant
+  updatedAt Instant
+}
+
+
+relationship ManyToOne {
+  MovieReview to Movie
+  MovieReview to User
+}

@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS movies (
+    id BIGSERIAL PRIMARY KEY  NOT NULL,
+    title VARCHAR(255),
+    description TEXT,
+    release_date TIMESTAMP WITHOUT TIME ZONE ,
+    created_at TIMESTAMP WITHOUT TIME ZONE ,
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);

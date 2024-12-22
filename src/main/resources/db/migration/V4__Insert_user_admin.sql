@@ -1,0 +1,2 @@
+INSERT INTO users(id, username, email, password,  created_at, is_admin, is_active)
+VALUES (1, 'admin@localhost.com', 'admin@localhost.com', '$2a$12$mda8E57KiCZqa2FZXsHQ7uHbuOP.Wb6dMTbpcx5PVjwqRSMdlgtNW',  now(), true, true);
