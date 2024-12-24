@@ -1,24 +1,66 @@
-@baseUrl = http://localhost:8080
+@baseUrl = http://localhost:9990
 @token= ""
 
 ### register user
-POST  {{baseUrl}}/api/v1/auth/register 
+POST  {{baseUrl}}/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "username": "akhmad@gmail.com",
-    "email": "akhmad@gmail.com",
-    "password": "akhmad123"
+  "username": "akhmad@gmail.com",
+  "email": "akhmad@gmail.com",
+  "password": "akhmad123"
 }
 
 
 ### login user
+# @name rAuth
 POST {{baseUrl}}/api/v1/auth/authenticate
 Content-Type: application/json
 
 {
-    "username": "admin@localhost.com",
-    "password": "admin123"
+    "username": "akhmad@gmail.com",
+    "password": "akhmad123"
+}
+
+@tokenBearer = Bearer {{rAuth.response.body.data.access_token}}
+
+
+### fetch movies
+GET {{baseUrl}}/api/v1/movies
+Authorization: {{tokenBearer}}
+
+### create review
+POST {{baseUrl}}/api/v1/movie-reviews
+Authorization: {{tokenBearer}}
+Content-Type: application/json
+
+{
+  "content": "Content review test",
+  "rating": 1,
+  "movie": {
+    "id": 1000
+  }
 }
 
 
+### update review
+PATCH  {{baseUrl}}/api/v1/movie-reviews/18
+Authorization: {{tokenBearer}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "content": "content update ",
+  "rating": 1
+}
+
+
+### delete review
+DELETE {{baseUrl}}/api/v1/movie-reviews/18
+Authorization: {{tokenBearer}}
+Content-Type: application/json
+
+
+### movie detail
+GET {{baseUrl}}/api/v1/movie-details/1000
+Authorization: {{tokenBearer}}

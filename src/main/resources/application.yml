@@ -19,7 +19,11 @@ spring:
       baselineOnMigrate: true
       validateOnMigrate: true
       locations: classpath:db/migration
-
+server:
+  port: 9990
+logging:
+  level:
+    root: INFO
 
 application:
   security:
